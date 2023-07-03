@@ -4,11 +4,11 @@ A very simple sketch-based 3D modeling system built with the help of *[3DBiCar](
 
 ## Demo
 
-https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/4776d8eb-b5ea-4fdd-b4b8-5e040d6df7dc
+https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/f19c3082-7d01-4205-a1da-1adc7e6a67b2
 
-https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/b3ae5573-de9a-4cea-9b35-f50a347eb3c2
+https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/331fa89b-e145-435b-824c-737381f94662
 
-https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/e8bde34c-6ed2-4811-ab90-cb645f31fa88
+https://github.com/zhongjinluo/Sketch2RaBit/assets/22856460/8e5ee370-444b-463b-bf8c-cef781c88ead
 
 ## Usage
 
