@@ -54,7 +54,7 @@ This system has been tested with Python 3.8, PyTorch 1.7.1, CUDA 10.2 on Ubuntu 
 
 - If you want to run the backend algorithms on a remote server, you may have to modify  `App/config.ini`.
 
-
+- If you are interested in sketch-based 3D modeling, you can also refer to [*SimpModeling*](https://github.com/zhongjinluo/SimpModeling) and [*SketchMetaFace*](https://github.com/zhongjinluo/SketchMetaFace).
 
 
 
