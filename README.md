@@ -29,7 +29,7 @@ This system has been tested with Python 3.8, PyTorch 1.7.1, CUDA 10.2 on Ubuntu 
   cd Sketch2RaBit
   ```
 
-- Download pre-compiled user interface and checkpoints for backend algorithms from [sketch2rabit_files.zip](https://cuhko365-my.sharepoint.com/:u:/g/personal/220019015_link_cuhk_edu_cn/EfrbrGVpsUlDuE4zZDfsJlIB-QzgUDb9GZO9MInG0ecWkQ?e=IQH7rJ) and then:
+- Download pre-compiled user interface and checkpoints for backend algorithms from [sketch2rabit_files.zip](https://cuhko365-my.sharepoint.com/:u:/g/personal/220019015_link_cuhk_edu_cn/EXxKE9ZsOxZJh-FtTUVsEJQBb31JXpl_gCiiRdJgZ2suPw?e=aOJFKF) and then:
 
   ```
   unzip sketch2rabit_files.zip
