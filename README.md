@@ -19,7 +19,7 @@ This system has been tested with Python 3.8, PyTorch 1.7.1, CUDA 10.2 on Ubuntu 
   ```
   conda create --name Sketch2RaBit -y python=3.8
   conda activate Sketch2RaBit
-  pip install -r requirements.txt
+  pip install -r requirements.txt 
   ```
 
 - Start by cloning this repo:
