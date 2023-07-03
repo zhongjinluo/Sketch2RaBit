@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>It's time to create your own appearance</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="./assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <link rel="icon" type="image/vnd.microsoft.icon"  href="./wPaint/demo/img/favicon.ico" />
+    <link rel="Stylesheet" type="text/css" href="./wPaint/demo/demo.css" />
+    <script type="text/javascript" src="./wPaint/lib/jquery.1.10.2.min.js"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <script>history.scrollRestoration = "manual"</script>
+  </head>
+
+  <body ng-app="app"> 
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DeepSketch2Character</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#draw" data-toggle="tab">Drawing</a></li>
+            <li><a href="#template" data-toggle="tab">Editing</a></li>
+            <li><a href="#gallery" data-toggle="tab">Gallery</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="spinnerModal" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered text-center" role="document" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">
+                <span class="fa fa-spinner fa-spin fa-3x w-100">Generating mesh...</span>
+              </h4>
+            </div>
+          </div>
+      </div>
+    </div> 
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="draw">
+        <div class="container">
+          <!-- canvas -->
+          <div class="row">
+            <div class="col-md-5">
+              <script type="text/javascript" src="./wPaint/lib/jquery.ui.core.1.10.3.min.js"></script>
+              <script type="text/javascript" src="./wPaint/lib/jquery.ui.widget.1.10.3.min.js"></script>
+              <script type="text/javascript" src="./wPaint/lib/jquery.ui.mouse.1.10.3.min.js"></script>
+              <script type="text/javascript" src="./wPaint/lib/jquery.ui.draggable.1.10.3.min.js"></script>
+              
+              <!-- wColorPicker -->
+              <link rel="Stylesheet" type="text/css" href="./wPaint/lib/wColorPicker.min.css" />
+              <script type="text/javascript" src="./wPaint/lib/wColorPicker.min.js"></script>
+        
+              <!-- wPaint -->
+              <link rel="Stylesheet" type="text/css" href="./wPaint/wPaint.min.css" />
+              <script type="text/javascript" src="./wPaint/wPaint.min.js"></script>
+              <script type="text/javascript" src="./wPaint/plugins/main/wPaint.menu.main.min.js"></script>
+              <script type="text/javascript" src="./wPaint/plugins/text/wPaint.menu.text.min.js"></script>
+              <script type="text/javascript" src="./wPaint/plugins/shapes/wPaint.menu.main.shapes.min.js"></script>
+              <script type="text/javascript" src="./wPaint/plugins/file/wPaint.menu.main.file.min.js"></script>
+              
+              <div id="wPaint" style="position:relative; width:515px; height:515px; background-color:#7a7a7a; margin:16% auto auto -12%; border:1.5px solid #B9B9B9"></div>
+
+              <center id="wPaint-img"></center>
+        
+              <script type="text/javascript">
+        
+                function loadImgBg () {
+        
+                  // internal function for displaying background images modal
+                  // where images is an array of images (base64 or url path)
+                  // NOTE: that if you can't see the bg image changing it's probably
+                  // becasue the foregroud image is not transparent.
+                  this._showFileModal('bg', images);
+                }
+        
+                function loadImgFg () {
+        
+                  // internal function for displaying foreground images modal
+                  // where images is an array of images (base64 or url path)
+                  this._showFileModal('fg', images);
+                }
+
+                function findGetParameter(parameterName) {
+                  var result = null,
+                    tmp = [];
+                  location.search
+                    .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                      tmp = item.split("=");
+                      if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                    });
+                  return result;
+                }
+                
+                $.fn.wPaint.menus.main = {
+                  img: 'wPaint/plugins/main/img/icons-menu-main.png',
+                  items: {
+                    undo: {
+                      icon: 'generic',
+                      title: 'Undo',
+                      index: 0,
+                      callback: function () { this.undo(); }
+                    },
+                    redo: {
+                      icon: 'generic',
+                      title: 'Redo',
+                      index: 1,
+                      callback: function () { this.redo(); }
+                    },
+                    clear: {
+                      icon: 'generic',
+                      title: 'Clear',
+                      index: 2,
+                      callback: function () { this.clear(); }
+                    },
+                    pencil: {
+                      icon: 'activate',
+                      title: 'Pencil',
+                      index: 6,
+                      callback: function () { this.setMode('pencil'); this.setLineWidth(1.0);}
+                    },
+                    eraser: {
+                      icon: 'activate',
+                      title: 'Eraser',
+                      index: 8,
+                      callback: function () { this.setMode('eraser'); this.setLineWidth(6.0);}
+                    },
+                    strokeStyle: {
+                      icon: 'colorPicker',
+                      title: 'Stroke Color',
+                      callback: function (color) { this.setStrokeStyle(color); }
+                    }
+                  }
+                };
+        
+                var img = 'wPaint/plugins/file/img/icons-menu-main-file.png';
+                // extend menu
+                $.extend(true, $.fn.wPaint.menus.main.items, {
+                  save: {
+                    icon: 'generic',
+                    title: 'Save Image',
+                    img: img,
+                    index: 0,
+                    callback: function () {
+                      $('#spinnerModal').modal('show');
+                      sketch = this.getImage()
+                      // this._displayStatus('Image saved successfully');
+                      $.ajax({
+                        type: 'POST',
+                        url: '/generate',
+                        data: sketch,
+                        success: function (resp) {
+                          $('#normal').attr("src", resp.normal);
+                          resp.mesh = "sources/3dviewer/examples/index.html?modelurl=http://" + window.location.host + "/" + resp.mesh
+                          $('#mesh').attr("src", resp.mesh);
+                          $('#spinnerModal').modal('hide');
+                        }
+                      });
+                    }
+                  },
+                  getMesh: {
+                    icon: 'generic',
+                    title: 'Save Image',
+                    img: img,
+                    index: 1,
+                    callback: function () {
+                      $('#spinnerModal').modal('show');
+                      sketch = this.getImage()
+                      // this._displayStatus('Image saved successfully');
+                      $.ajax({
+                        type: 'POST',
+                        url: '/generate_mesh',
+                        data: sketch,
+                        success: function (resp) {
+                          $('#normal').attr("src", resp.normal);
+                          resp.mesh = "sources/3dviewer/examples/index.html?modelurl=http://" + window.location.host + "/" + resp.mesh
+                          // console.log("sources/3dviewer/examples/index.html?modelurl=http://" + window.location.host + "/" + resp.mesh)
+                          $('#mesh').attr("src", resp.mesh);
+                          $('#spinnerModal').modal('hide');
+                        }
+                      });
+                    }
+                  },
+                });
+                
+                // init wPaint
+                $('#wPaint').wPaint({
+                  menuOffsetLeft: 0,
+                  menuOffsetTop: -55,
+                  bg: '#ffffff',
+                  strokeStyle: '#000000',  // start stroke style
+                  lineWidth: '1',       // starting line width
+                  // menuOrientation: 'vertical',
+                });
+                var fg_image = findGetParameter("image")
+                if(fg_image != null){
+                  $('#wPaint').wPaint('image', fg_image);
+                }
+                
+                $(window).on('beforeunload', function() {
+                    $(window).scrollTop(0);
+                });
+                $(document).ready(function(){
+                  $('.navbar-nav a').on('show.bs.tab', function(){
+                    $(window).scrollTop(0);
+                  });
+                });
+              </script>
+            </div>
+
+            <div class="col-md-5 col-md-offset-1">
+              <img id="normal" alt="test" width="515" height="515" style="position:relative; width:515px; height:515px; background-color:#7a7a7a; margin:16% auto auto auto; border:1.5px solid #B9B9B9">
+              <script>
+                $('#normal').attr("src", "gallery/placeholder.png");
+              </script>
+            </div>
+          </div>
+          <div class="row">
+            <iframe id="mesh" src="sources/3dviewer/examples/index.html?modelurl=test_p.drc" style="margin:2% auto auto auto; width:100%; height:600px;"></iframe>
+            <script>
+              $('#mesh').attr("src", "sources/3dviewer/examples/index.html?modelurl=test_p.drc");
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <!-- Template -->
+      <div class="tab-pane" id="template">
+        <div class="container">
+            <div ng-include="'./sources/template.html'"></div>
+        </div>
+      </div>
+
+
+      <!-- Gallery -->
+      <div class="tab-pane" id="gallery">
+        <div class="container">
+          <div ng-include="'./sources/gallery.html'"></div>
+        </div>
+      </div>
+      
+      <script src="./sources/controller.js"></script>
+
+    </div>
+
+  </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
+      
+  </body>
+</html>

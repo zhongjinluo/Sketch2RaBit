@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0 python scripts/train.py \
+--dataset_type=body_single_4592 \
+--checkpoint_path=/program/huawei/something/pSp/checkpoints/best_model.pt \
+--exp_dir=/program/huawei/something/pSp/out/render_masked \
+--output_size=1024 \
+--workers=2 \
+--batch_size=2 \
+--test_batch_size=2 \
+--test_workers=2 \
+--max_steps=50000 \
+--val_interval=1000 \
+--save_interval=2000 \
+--encoder_type=GradualStyleEncoder \
+--start_from_latent_avg \
+--lpips_lambda=0.8 \
+--l2_lambda=1 \
+--train_decoder=False \
+--use_wandb
